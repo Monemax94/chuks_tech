@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs><pattern id="d" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#00B4D8" opacity=".25"/></pattern></defs>
+  <rect width="1200" height="630" fill="#0A1628"/>
+  <rect width="1200" height="630" fill="url(#d)"/>
+  <g fill="none" stroke="#27406A" stroke-width="3">
+    <path d="M900 150v110M900 260H760v110M900 260h140v110M760 370v70M1040 370v70M760 370h-80M1040 370h80"/>
+  </g>
+  <g fill="#12233D" stroke="#00B4D8" stroke-width="3">
+    <rect x="860" y="110" width="80" height="50" rx="6"/>
+    <rect x="720" y="370" width="80" height="50" rx="6"/>
+    <rect x="1000" y="370" width="80" height="50" rx="6"/>
+    <rect x="640" y="440" width="80" height="50" rx="6"/>
+    <rect x="1080" y="440" width="80" height="50" rx="6"/>
+  </g>
+  <g fill="#00B4D8"><circle cx="900" cy="260" r="7"/><circle cx="760" cy="300" r="6"/><circle cx="1040" cy="300" r="6" fill="#FF9F1C"/></g>
+  <g font-family="Sora,'Segoe UI',Arial,sans-serif">
+    <text x="70" y="270" font-size="64" font-weight="700" fill="#FFFFFF">Chukz Tech</text>
+    <text x="70" y="345" font-size="64" font-weight="700" fill="#FFFFFF">Services</text>
+    <text x="70" y="410" font-size="30" fill="#00B4D8">Connecting Technology. Empowering Businesses.</text>
+    <text x="70" y="540" font-size="24" fill="#C9D6E8">IT infrastructure and network engineering</text>
+    <text x="70" y="575" font-size="24" fill="#C9D6E8">Asaba, Delta State, Nigeria</text>
+  </g>
+</svg>
