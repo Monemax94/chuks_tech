@@ -401,3 +401,26 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 
 .no-js .acc-panel[hidden] { display: block; }
 .no-js .acc-btn::after { display: none; }
+
+/* patches (Phase 6): image slider + project photos */
+.slider-wrap { display: grid; gap: var(--s5); align-items: center; }
+@media (min-width: 960px) { .slider-wrap { grid-template-columns: 5fr 7fr; } }
+.slider { width: 100%; max-width: 640px; margin-inline: auto; }
+.slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: var(--radius); background: var(--navy); overscroll-behavior-x: contain; }
+.slides::-webkit-scrollbar { display: none; }
+.no-js .slides { scrollbar-width: thin; }
+.slide { position: relative; flex: 0 0 100%; margin: 0; scroll-snap-align: center; }
+.slide img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.slide figcaption { position: absolute; inset: auto 0 0 0; padding: 40px var(--s2) var(--s2); color: #fff; font-size: var(--fs-sm); font-weight: 600; background: linear-gradient(transparent, rgba(10, 22, 40, .92)); }
+.slider-ctrl { display: flex; align-items: center; gap: var(--s1); margin-top: var(--s2); }
+.no-js .slider-ctrl { display: none; }
+.slider-btn { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--navy); background: var(--white); color: var(--navy); cursor: pointer; }
+.slider-btn:hover { background: var(--navy); color: var(--white); }
+.slider-btn .icon { width: 22px; height: 22px; stroke-width: 2.2; }
+.slider-count { margin-inline: auto; font-size: var(--fs-sm); color: var(--muted); font-weight: 600; }
+.slider-toggle { min-height: 44px; padding: 0 16px; border: 1.5px solid var(--navy); border-radius: 999px; background: var(--white); color: var(--navy); font: 600 var(--fs-sm) var(--font-body); cursor: pointer; }
+.slider-toggle:hover { background: var(--navy); color: var(--white); }
+.thumb-img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); margin-bottom: var(--s2); background: var(--navy-2); }
+.modal dd img { display: block; width: 100%; max-width: 420px; height: auto; border-radius: var(--radius); margin-top: var(--s1); }
+.white .btn-secondary { color: var(--navy); border-color: var(--navy); }
+.white .btn-secondary:hover { background: var(--navy); color: var(--white); }

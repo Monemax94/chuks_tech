@@ -3,7 +3,7 @@
    Modules: 0 Config | 1 Project data | 2 Helpers | 3 Year | 4 Nav + header
    5 Scroll reveal | 6 Tabs | 7 Accordion | 8 Modal | 9 Projects + filter
    10 Message builders (mailto / WhatsApp / copy) | 11 Form engine
-   12 Quote wizard | 13 Contact form | 14 Service sub-nav
+   12 Quote wizard | 13 Contact form | 14 Service sub-nav | 15 Image slider
    ========================================================================== */
 (function () {
   "use strict";
@@ -16,45 +16,114 @@
   };
 
   /* ---------- 1. PROJECT DATA ----------
-     To add a real project: add ONE object to PROJECTS and set placeholder to false
-     (or delete the placeholder entries). No HTML edits needed.
+     To add a real project: add ONE object to PROJECTS (no HTML edits needed).
 
      SCHEMA
        id          string   unique, no spaces
        title       string   card + modal heading
        category    string   "Networking" | "Servers" | "Cabling" | "Upgrades"
        summary     string   one line shown on the card
-       placeholder boolean  true while content is not real
+       placeholder boolean  true while content is not real (shows the "coming soon" banner)
+       thumb       object   card image (4:3): { src, alt, width, height }
        overview    string   Project overview
        requirements string  Client requirements (only where disclosure is permitted)
        equipment   array    Equipment and technologies deployed
        scope       array    Scope of technical work
-       photos      array    [{ src: "assets/projects/x.jpg", alt: "...", width: 800, height: 600 }]
+       photos      array    modal photos: [{ src, alt, width, height }]
        outcome     string   Project outcome
 
-     EXAMPLE (copy, remove the comment markers, edit, then add to the array):
-       {
-         id: "example-office-network",
-         title: "Example: Office network installation",
-         category: "Networking",
-         summary: "Short one-line summary.",
-         placeholder: false,
-         overview: "What was done and where.",
-         requirements: "What the client needed.",
-         equipment: ["Cisco switches", "Structured cabling"],
-         scope: ["Installation", "Configuration", "Testing"],
-         photos: [{ src: "assets/projects/example.jpg", alt: "Rack after installation", width: 800, height: 600 }],
-         outcome: "Result delivered."
-       },
+     OWNER: the wording below was written conservatively from the project titles and the
+     photographs. Please confirm each project's details before launch.
   */
-  var PH = "[Coming soon]"; // OWNER: replace placeholder text with real content
+  var PH = "[Coming soon]"; // used only by placeholder entries
+  var IMG = "assets/projects/";
   var PROJECTS = [
-    { id: "p1", title: "[Project title coming soon]", category: "Networking", summary: "[Networking project coming soon]", placeholder: true, overview: PH, requirements: PH, equipment: [PH], scope: [PH], photos: [], outcome: PH },
-    { id: "p2", title: "[Project title coming soon]", category: "Servers", summary: "[Server project coming soon]", placeholder: true, overview: PH, requirements: PH, equipment: [PH], scope: [PH], photos: [], outcome: PH },
-    { id: "p3", title: "[Project title coming soon]", category: "Cabling", summary: "[Cabling project coming soon]", placeholder: true, overview: PH, requirements: PH, equipment: [PH], scope: [PH], photos: [], outcome: PH },
-    { id: "p4", title: "[Project title coming soon]", category: "Upgrades", summary: "[Upgrade project coming soon]", placeholder: true, overview: PH, requirements: PH, equipment: [PH], scope: [PH], photos: [], outcome: PH },
-    { id: "p5", title: "[Project title coming soon]", category: "Networking", summary: "[Networking project coming soon]", placeholder: true, overview: PH, requirements: PH, equipment: [PH], scope: [PH], photos: [], outcome: PH },
-    { id: "p6", title: "[Project title coming soon]", category: "Servers", summary: "[Server project coming soon]", placeholder: true, overview: PH, requirements: PH, equipment: [PH], scope: [PH], photos: [], outcome: PH }
+    {
+      id: "dell-poweredge-server-installation",
+      title: "Dell PowerEdge server installation, integration and deployment",
+      category: "Servers",
+      summary: "Server hardware installed, integrated and deployed in an equipment rack.",
+      placeholder: false,
+      thumb: { src: IMG + "server-installation-dell-poweredge-thumb.webp", alt: "Technician in a high-visibility vest configuring equipment with a laptop at a server rack", width: 480, height: 360 },
+      overview: "Installation, integration and deployment of Dell PowerEdge servers, including connecting and configuring the equipment in the rack.",
+      requirements: "Client details are shared only where disclosure is permitted.",
+      equipment: ["Dell PowerEdge servers", "Rack-mounted network equipment", "Patch cabling"],
+      scope: ["Installing server hardware in the rack", "Connecting the servers to the network", "Configuring and integrating the servers", "Testing the installation"],
+      photos: [{ src: IMG + "server-installation-dell-poweredge-640.webp", alt: "Technician in a high-visibility vest configuring equipment with a laptop at a server rack", width: 640, height: 853 }],
+      outcome: "Project outcome details are being added."
+    },
+    {
+      id: "router-configuration",
+      title: "Router configuration",
+      category: "Networking",
+      summary: "On-site router configuration carried out at an equipment rack.",
+      placeholder: false,
+      thumb: { src: IMG + "router-configuration-thumb.webp", alt: "Technician in a high-visibility vest working on a router at an equipment rack with a laptop", width: 480, height: 360 },
+      overview: "Configuration of a router within an equipment rack, carried out on site by our technician using a laptop.",
+      requirements: "Client details are shared only where disclosure is permitted.",
+      equipment: ["Router", "Rack-mounted network equipment", "Patch cabling"],
+      scope: ["Connecting to the router for configuration", "Applying the required configuration", "Checking connectivity after configuration"],
+      photos: [{ src: IMG + "router-configuration-640.webp", alt: "Technician in a high-visibility vest working on a router at an equipment rack with a laptop", width: 640, height: 853 }],
+      outcome: "Project outcome details are being added."
+    },
+    {
+      id: "spine-switch-line-card",
+      title: "Spine switch line card installation, replacement and upgrade",
+      category: "Upgrades",
+      summary: "Line card work on a spine switch, with fibre patching in the rack.",
+      placeholder: false,
+      thumb: { src: IMG + "spine-switch-line-card-thumb.webp", alt: "Technician in a red high-visibility vest working on fibre patch cabling and a switch chassis in a rack", width: 480, height: 360 },
+      overview: "Installation, replacement and upgrade of line cards in a spine switch chassis, including the fibre patch cabling around it.",
+      requirements: "Client details are shared only where disclosure is permitted.",
+      equipment: ["Spine switch chassis and line cards", "Fibre patch cabling", "Cable labelling"],
+      scope: ["Installing, replacing and upgrading line cards", "Reconnecting fibre patch cabling", "Testing links after the work"],
+      photos: [{ src: IMG + "spine-switch-line-card-640.webp", alt: "Technician in a red high-visibility vest working on fibre patch cabling and a switch chassis in a rack", width: 640, height: 853 }],
+      outcome: "Project outcome details are being added."
+    },
+    {
+      id: "switch-line-card",
+      title: "Switch line card installation, replacement and upgrade",
+      category: "Upgrades",
+      summary: "Switch line card installation and replacement in a patched rack.",
+      placeholder: false,
+      thumb: { src: IMG + "switch-line-card-thumb.webp", alt: "Technician in a red high-visibility vest installing a line card in a rack-mounted switch with fibre patch cables above", width: 480, height: 360 },
+      overview: "Installation, replacement and upgrade of line cards in a rack-mounted switch, alongside fibre and copper patch cabling.",
+      requirements: "Client details are shared only where disclosure is permitted.",
+      equipment: ["Switch chassis and line cards", "Fibre and copper patch cabling", "Cable labelling"],
+      scope: ["Installing, replacing and upgrading line cards", "Reconnecting patch cabling", "Testing links after the work"],
+      photos: [{ src: IMG + "switch-line-card-640.webp", alt: "Technician in a red high-visibility vest installing a line card in a rack-mounted switch with fibre patch cables above", width: 640, height: 853 }],
+      outcome: "Project outcome details are being added."
+    },
+    {
+      id: "structured-cabling-data-centre",
+      title: "Structured cabling and connectivity deployment for data centre infrastructure",
+      category: "Cabling",
+      summary: "Patch cabling connected to a rack of servers.",
+      placeholder: false,
+      thumb: { src: IMG + "structured-cabling-data-centre-thumb.webp", alt: "Technician in a red high-visibility vest connecting patch cables at a rack of servers", width: 480, height: 360 },
+      overview: "Structured cabling and connectivity deployment for data centre infrastructure, with patch cables connected to rack-mounted equipment.",
+      requirements: "Client details are shared only where disclosure is permitted.",
+      equipment: ["Structured cabling", "Patch cables", "Rack-mounted servers"],
+      scope: ["Routing and connecting cabling to rack equipment", "Patching connections to equipment ports", "Testing the connections"],
+      photos: [{ src: IMG + "structured-cabling-data-centre-640.webp", alt: "Technician in a red high-visibility vest connecting patch cables at a rack of servers", width: 640, height: 853 }],
+      outcome: "Project outcome details are being added."
+    },
+    {
+      /* OWNER: this photo (rack row) stands in for the cloud storage project because the three structured
+         cabling photos supplied were the same image. Swap thumb/photos for a dedicated photo when available. */
+      id: "structured-cabling-cloud-storage",
+      title: "Structured cabling and network connectivity for cloud storage infrastructure",
+      category: "Cabling",
+      summary: "Cabling and connectivity for racks of storage infrastructure.",
+      placeholder: false,
+      thumb: { src: IMG + "structured-cabling-cloud-storage-thumb.webp", alt: "Rows of closed equipment racks with illuminated equipment", width: 480, height: 360 },
+      overview: "Structured cabling and network connectivity for cloud storage infrastructure housed in rows of equipment racks.",
+      requirements: "Client details are shared only where disclosure is permitted.",
+      equipment: ["Structured cabling", "Network connectivity equipment", "Equipment racks"],
+      scope: ["Installing structured cabling to the racks", "Connecting equipment to the network", "Testing the connections"],
+      photos: [{ src: IMG + "structured-cabling-cloud-storage-640.webp", alt: "Rows of closed equipment racks with illuminated equipment", width: 640, height: 480 }],
+      outcome: "Project outcome details are being added."
+    }
   ];
 
   var SERVICES = {
@@ -218,7 +287,11 @@
       card.type = "button";
       card.setAttribute("data-category", p.category);
       card.setAttribute("aria-haspopup", "dialog");
-      card.appendChild(el("div", "thumb", p.placeholder ? "[Project photo coming soon]" : "Project photos in details")); /* OWNER: replace */
+      if (p.thumb) {
+        var t = new Image(); t.className = "thumb-img"; t.loading = "lazy"; t.decoding = "async";
+        t.width = p.thumb.width; t.height = p.thumb.height; t.alt = p.thumb.alt || ""; t.src = p.thumb.src;
+        card.appendChild(t);
+      } else { card.appendChild(el("div", "thumb", "[Project photo coming soon]")); /* OWNER: replace */ }
       card.appendChild(el("span", "badge", p.category));
       card.appendChild(el("h3", null, p.title));
       card.appendChild(el("p", null, p.summary));
@@ -412,4 +485,48 @@
     }, { rootMargin: "-30% 0px -60% 0px" });
     Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
   })();
+  /* ---------- 15. IMAGE SLIDER (scroll-snap, buttons, keyboard, optional autoplay) ---------- */
+  $$("[data-slider]").forEach(function (root) {
+    var track = $(".slides", root), slides = $$(".slide", root), prev = $("[data-slide-prev]", root),
+        next = $("[data-slide-next]", root), toggle = $("[data-slide-toggle]", root), count = $("[data-slide-count]", root);
+    var i = 0, timer = null, userPaused = false, visible = false;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      track.scrollTo({ left: i * track.clientWidth, behavior: reduce ? "auto" : "smooth" });
+    }
+    function sync() {
+      i = Math.round(track.scrollLeft / track.clientWidth) || 0;
+      if (count) count.textContent = (i + 1) + " / " + slides.length;
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } track.setAttribute("aria-live", "polite"); }
+    function start() {
+      if (reduce || userPaused || !visible || timer) return;
+      track.setAttribute("aria-live", "off");
+      timer = setInterval(function () { show(i + 1); }, 6000);
+    }
+    track.addEventListener("scroll", function () { window.requestAnimationFrame(sync); }, { passive: true });
+    if (prev) prev.addEventListener("click", function () { show(i - 1); });
+    if (next) next.addEventListener("click", function () { show(i + 1); });
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { e.preventDefault(); show(i - 1); } else if (e.key === "ArrowRight") { e.preventDefault(); show(i + 1); }
+    });
+    if (toggle) {
+      if (reduce) toggle.hidden = true;
+      toggle.addEventListener("click", function () {
+        userPaused = !userPaused;
+        toggle.setAttribute("aria-pressed", String(userPaused));
+        toggle.textContent = userPaused ? "Play" : "Pause";
+        if (userPaused) stop(); else start();
+      });
+    }
+    ["mouseenter", "focusin", "touchstart"].forEach(function (ev) { root.addEventListener(ev, stop, { passive: true }); });
+    ["mouseleave", "focusout"].forEach(function (ev) { root.addEventListener(ev, start); });
+    document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else start(); });
+    window.addEventListener("resize", function () { track.scrollTo({ left: i * track.clientWidth, behavior: "auto" }); });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) start(); else stop(); }, { threshold: 0.4 }).observe(root);
+    }
+    sync();
+  });
 })();
